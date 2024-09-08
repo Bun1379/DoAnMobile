@@ -1,6 +1,6 @@
 import React, { useState } from 'react';
 import { View, Text, TextInput, Button, Alert, StyleSheet } from 'react-native';
-import api from '../api';
+import AuthorAPI from '../API/AuthorAPI';
 
 function Login({ navigation }) {
     const [email, setEmail] = useState('');
@@ -8,7 +8,7 @@ function Login({ navigation }) {
 
     const handleLogin = async () => {
         try {
-            const response = await api.post('/user/login', {
+            const response = await AuthorAPI.Login({
                 email,
                 password,
             });

@@ -1,6 +1,6 @@
 import React, { useState } from 'react';
 import { View, Text, TextInput, Button, Alert, StyleSheet } from 'react-native';
-import api from '../api';
+import AuthorAPI from '../API/AuthorAPI';
 
 function Signup({ navigation }) {
     const [email, setEmail] = useState('');
@@ -8,7 +8,7 @@ function Signup({ navigation }) {
 
     const handleSignup = async () => {
         try {
-            const response = await api.post('/user/signup', { // Sử dụng endpoint API
+            const response = await uthorAPI.Signup({ // Sử dụng endpoint API
                 email,
                 password,
             });

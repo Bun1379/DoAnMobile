@@ -1,6 +1,6 @@
 import React, { useState } from 'react';
 import { View, Text, TextInput, Button, Alert, StyleSheet } from 'react-native';
-import api from '../api';
+import AuthorAPI from '../API/AuthorAPI';
 
 function ResetPW({ navigation, route }) {
     const { email } = route.params; // Lấy giá trị email từ route.params
@@ -9,7 +9,7 @@ function ResetPW({ navigation, route }) {
 
     const handleForgotPW = async () => {
         try {
-            const response = await api.post('/user/reset-password', { // Sử dụng endpoint API
+            const response = await AuthorAPI.ResetPW({ // Sử dụng endpoint API
                 email,
                 otp,
                 newPassword

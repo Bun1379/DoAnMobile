@@ -1,13 +1,13 @@
 import React, { useState } from 'react';
 import { View, Text, TextInput, Button, Alert, StyleSheet } from 'react-native';
-import api from '../api';
+import AuthorAPI from '../API/AuthorAPI';
 
 function ForgotPW({ navigation }) {
     const [email, setEmail] = useState('');
 
     const handleForgotPW = async () => {
         try {
-            const response = await api.post('/user/forgot-password', { // Sử dụng endpoint API
+            const response = await AuthorAPI.SendOTP({ // Sử dụng endpoint API
                 email
             });
             // console.log('Kết quả:', response.data);
