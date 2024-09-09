@@ -1,5 +1,6 @@
 import React, { useState } from 'react';
 import { View, Text, TextInput, Button, Alert, StyleSheet } from 'react-native';
+import AsyncStorage from '@react-native-async-storage/async-storage'; // Thêm import AsyncStorage
 import AuthorAPI from '../API/AuthorAPI';
 
 function Login({ navigation }) {
@@ -14,7 +15,7 @@ function Login({ navigation }) {
             });
 
             if (response.data.EM === "Login successfully") {
-                const token = response.data.token; // Lưu token nếu cần
+                await AsyncStorage.setItem('token', response.data.DT.token);
                 Alert.alert('Đăng nhập thành công!');
                 navigation.navigate('Introduce'); // Chuyển đến màn hình Introduce
             } else {
@@ -67,9 +68,7 @@ const styles = StyleSheet.create({
         marginBottom: 20,
         paddingHorizontal: 10,
     },
-    Button: {
-        margin: 10
-    }
+    // Xóa style Button vì Button không hỗ trợ style trực tiếp
 });
 
 export default Login;

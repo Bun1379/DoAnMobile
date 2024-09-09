@@ -2,7 +2,7 @@ import { Text, StyleSheet, View } from 'react-native';
 function App() {
     return (
         <View style={styles.container}>
-            <Text style={{ fontSize: 20, color: 'red' }}>Home Page</Text>
+            <Text style={{ fontSize: 20, color: 'red' }}>Home Page123</Text>
         </View>
     );
 }

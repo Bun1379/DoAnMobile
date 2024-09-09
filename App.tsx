@@ -20,7 +20,7 @@ function App() {
         <Stack.Screen name="Signup" component={Signup} />
         <Stack.Screen name="ForgotPW" component={ForgotPW} />
         <Stack.Screen name="ResetPW" component={ResetPW} />
-
+        <Stack.Screen name="Home" component={Home} />
       </Stack.Navigator>
     </NavigationContainer>
   );
