@@ -1,13 +1,13 @@
 import { StyleSheet } from 'react-native';
 import React from 'react';
-import Home from './src/Home/Home';
-import Introduce from './src/Introduce/Introduce';
-import Login from './src/LoginRegister/Login';
+import Home from './src/screens/Home/Home';
+import Introduce from './src/screens/Introduce/Introduce';
+import Login from './src/screens/LoginRegister/Login';
 import { NavigationContainer } from '@react-navigation/native';
 import { createNativeStackNavigator } from '@react-navigation/native-stack';
-import Signup from './src/LoginRegister/Signup';
-import ForgotPW from './src/LoginRegister/ForgotPW';
-import ResetPW from './src/LoginRegister/ResetPW';
+import Signup from './src/screens/LoginRegister/Signup';
+import ForgotPW from './src/screens/LoginRegister/ForgotPW';
+import ResetPW from './src/screens/LoginRegister/ResetPW';
 const Stack = createNativeStackNavigator();
 function App() {
   return (

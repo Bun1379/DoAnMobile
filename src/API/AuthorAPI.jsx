@@ -1,4 +1,4 @@
-import axiosClient from "./AxiosClient";
+import { axiosClient, axiosPrivate } from "./AxiosClient";
 
 class AuthorAPI {
 
@@ -9,7 +9,7 @@ class AuthorAPI {
 
     static async Login(data) {
         const url = '/user/login';
-        return axiosClient.post(url, data);
+        return axiosPrivate.post(url, data);
     }
 
     static async SendOTP(data) {

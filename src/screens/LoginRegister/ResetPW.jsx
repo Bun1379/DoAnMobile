@@ -1,79 +1,62 @@
 import React, { useState } from 'react';
-import { View, Text, TextInput, Button, Alert, StyleSheet } from 'react-native';
-import AuthorAPI from '../API/AuthorAPI';
+import { View, Text, TextInput, TouchableOpacity, Alert } from 'react-native';
+import AuthorAPI from '../../API/AuthorAPI';
 
 function ResetPW({ navigation, route }) {
     const { email } = route.params; // Lấy giá trị email từ route.params
     const [otp, setOTP] = useState('');
-    const [newPassword, setnewPassword] = useState('');
+    const [newPassword, setNewPassword] = useState('');
 
     const handleForgotPW = async () => {
+        if (!otp || !newPassword) {
+            Alert.alert('Lỗi', 'OTP và mật khẩu không được để trống.');
+            return;
+        }
         try {
             const response = await AuthorAPI.ResetPW({ // Sử dụng endpoint API
                 email,
                 otp,
                 newPassword
             });
-            if (response.data.EM == "Reset password successfully") {
+            if (response.data.EM === "Reset password successfully") {
                 Alert.alert('Reset mật khẩu thành công!');
                 navigation.navigate('Login'); // Chuyển đến màn hình Login
             } else {
                 Alert.alert('Lỗi:', response.data.message);
             }
         } catch (error) {
-            Alert.alert('Lỗi', 'Không thể kết nối đến máy chủ');
+            Alert.alert('Lỗi', error.message || 'Đã xảy ra lỗi');
             console.error(error); // Log lỗi để giúp gỡ lỗi dễ hơn
         }
     };
 
     return (
-        <View style={styles.container}>
-            <Text style={styles.title}>Reset mật khẩu</Text>
+        <View className="flex-1 justify-center p-5">
+            <Text className="text-2xl mb-5 text-center">Reset mật khẩu</Text>
             <TextInput
-                style={styles.input}
+                className="h-10 border border-gray-400 mb-5 px-2"
                 placeholder="Tên đăng nhập"
                 value={email} // Hiển thị email đã được truyền qua route.params
                 editable={false} // Ngăn chỉnh sửa email
             />
             <TextInput
-                style={styles.input}
+                className="h-10 border border-gray-400 mb-5 px-2"
                 placeholder="OTP"
                 value={otp}
                 onChangeText={setOTP}
             />
             <TextInput
-                style={styles.input}
+                className="h-10 border border-gray-400 mb-5 px-2"
                 placeholder="Mật khẩu mới"
                 value={newPassword}
-                onChangeText={setnewPassword}
+                onChangeText={setNewPassword}
                 secureTextEntry
             />
-            <Button title="Xác nhận" onPress={handleForgotPW} />
+            <TouchableOpacity className="bg-blue-500 p-3 rounded mb-3" onPress={handleForgotPW}>
+                <Text className="text-white text-center">Xác nhận</Text>
+            </TouchableOpacity>
         </View>
     );
 }
-
-const styles = StyleSheet.create({
-    container: {
-        flex: 1,
-        justifyContent: 'center',
-        padding: 20,
-    },
-    title: {
-        fontSize: 24,
-        marginBottom: 20,
-        textAlign: 'center',
-    },
-    input: {
-        height: 40,
-        borderColor: 'gray',
-        borderWidth: 1,
-        marginBottom: 20,
-        paddingHorizontal: 10,
-    },
-    Button: {
-        margin: 10
-    }
-});
 
 export default ResetPW;
