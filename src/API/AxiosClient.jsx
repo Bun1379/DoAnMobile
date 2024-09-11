@@ -18,15 +18,18 @@ const axiosPrivate = axios.create({
     paramsSerializer: params => queryString.stringify(params),
 });
 
-axiosPrivate.interceptors.request.use(config => {
-    const token = AsyncStorage.getItem('token');
-    if (!token) {
-        // Nếu không có token, điều hướng về trang login
-        Alert.alert("Thông báo", "Vui lòng đăng nhập lại.");
-        return Promise.reject(new Error("Không có token, vui lòng đăng nhập lại."));
-    } else {
-        config.headers['Authorization'] = `Bearer ${token}`;
-        return config;
+axiosPrivate.interceptors.request.use(async config => {
+    try {
+        const token = await AsyncStorage.getItem('token'); // Dùng await để đợi token được lấy ra
+        if (!token) {
+            Alert.alert("Thông báo", "Vui lòng đăng nhập lại.");
+            return Promise.reject(new Error("Không có token, vui lòng đăng nhập lại."));
+        } else {
+            config.headers['Authorization'] = `Bearer ${token}`;
+            return config;
+        }
+    } catch (error) {
+        return Promise.reject(error);
     }
 }, error => {
     return Promise.reject(error);

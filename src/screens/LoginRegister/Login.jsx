@@ -21,7 +21,8 @@ function Login({ navigation }) {
             });
 
             if (response.data.EM === "Login successfully") {
-                await AsyncStorage.setItem('token', response.data.DT.token);
+                await AsyncStorage.setItem("token", response.data.DT.token);
+                await AsyncStorage.setItem("user", JSON.stringify(response.data.DT.user));
                 Alert.alert('Đăng nhập thành công!');
                 navigation.navigate('Introduce'); // Chuyển đến màn hình Introduce
             } else {

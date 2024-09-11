@@ -9,7 +9,7 @@ class AuthorAPI {
 
     static async Login(data) {
         const url = '/user/login';
-        return axiosPrivate.post(url, data);
+        return axiosClient.post(url, data);
     }
 
     static async SendOTP(data) {
@@ -19,6 +19,10 @@ class AuthorAPI {
 
     static async ResetPW(data) {
         const url = '/user/reset-password';
+        return axiosClient.post(url, data);
+    }
+    static async VerifiedUser(data) {
+        const url = '/user/verified-user';
         return axiosClient.post(url, data);
     }
 }

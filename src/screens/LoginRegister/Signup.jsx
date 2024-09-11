@@ -18,7 +18,10 @@ function Signup({ navigation }) {
             });
             if (response.data.EM === "Create user successfully") {
                 Alert.alert('Đăng ký thành công!');
-                navigation.navigate('Login'); // Chuyển đến màn hình Login
+                await AuthorAPI.SendOTP({
+                    email,
+                });
+                navigation.navigate('EnterOTP', { email });
             } else {
                 Alert.alert('Đăng ký thất bại', response.data.message);
             }

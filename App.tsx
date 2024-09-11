@@ -8,19 +8,20 @@ import { createNativeStackNavigator } from '@react-navigation/native-stack';
 import Signup from './src/screens/LoginRegister/Signup';
 import ForgotPW from './src/screens/LoginRegister/ForgotPW';
 import ResetPW from './src/screens/LoginRegister/ResetPW';
+import EnterOTP from './src/screens/LoginRegister/EnterOTP';
 const Stack = createNativeStackNavigator();
 function App() {
   return (
     <NavigationContainer>
       <Stack.Navigator
-        initialRouteName="Login"
-        screenOptions={{ headerShown: false }}>
+        initialRouteName="Login">
         <Stack.Screen name="Login" component={Login} />
         <Stack.Screen name="Introduce" component={Introduce} />
         <Stack.Screen name="Signup" component={Signup} />
         <Stack.Screen name="ForgotPW" component={ForgotPW} />
         <Stack.Screen name="ResetPW" component={ResetPW} />
         <Stack.Screen name="Home" component={Home} />
+        <Stack.Screen name="EnterOTP" component={EnterOTP} />
       </Stack.Navigator>
     </NavigationContainer>
   );
