@@ -1,7 +1,7 @@
 import React, { useState, useEffect } from 'react';
 import { View, Text, TextInput, TouchableOpacity, Alert } from 'react-native';
 import AuthorAPI from '../../API/AuthorAPI';
-function EnterOTP({ navigation, route }) {
+function VerifyUser({ navigation, route }) {
     const [otp, setOtp] = useState('');
     const { email } = route.params;
     const handleConfirmOtp = async () => {
@@ -35,4 +35,4 @@ function EnterOTP({ navigation, route }) {
         </View>
     );
 }
-export default EnterOTP;
+export default VerifyUser;

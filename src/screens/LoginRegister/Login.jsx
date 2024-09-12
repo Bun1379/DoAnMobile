@@ -23,8 +23,14 @@ function Login({ navigation }) {
             if (response.data.EM === "Login successfully") {
                 await AsyncStorage.setItem("token", response.data.DT.token);
                 await AsyncStorage.setItem("user", JSON.stringify(response.data.DT.user));
-                Alert.alert('Đăng nhập thành công!');
-                navigation.navigate('Introduce'); // Chuyển đến màn hình Introduce
+                if (response.data.DT.user.is_verified === false) {
+                    Alert.alert('Đăng nhập thành công!');
+                    navigation.navigate('VerifyUser', { email });
+                }
+                else if (response.data.DT.user.is_admin === true) {
+                    Alert.alert('Đăng nhập thành công!');
+                    navigation.navigate('UserProfile');
+                }
             } else {
                 Alert.alert('Đăng nhập thất bại', response.data.message);
             }

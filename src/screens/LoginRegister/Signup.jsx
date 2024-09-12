@@ -21,7 +21,7 @@ function Signup({ navigation }) {
                 await AuthorAPI.SendOTP({
                     email,
                 });
-                navigation.navigate('EnterOTP', { email });
+                navigation.navigate('VerifyUser', { email });
             } else {
                 Alert.alert('Đăng ký thất bại', response.data.message);
             }
