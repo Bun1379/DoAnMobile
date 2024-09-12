@@ -3,26 +3,26 @@ import { axiosClient, axiosPrivate } from "./AxiosClient";
 class AuthorAPI {
 
     static async Signup(data) {
-        const url = '/user/signup';
+        const url = '/auth/signup';
         return axiosClient.post(url, data);
     }
 
     static async Login(data) {
-        const url = '/user/login';
+        const url = '/auth/login';
         return axiosClient.post(url, data);
     }
 
     static async SendOTP(data) {
-        const url = '/user/send-otp';
+        const url = '/auth/send-otp';
         return axiosClient.post(url, data);
     }
 
     static async ResetPW(data) {
-        const url = '/user/reset-password';
+        const url = '/auth/reset-password';
         return axiosClient.post(url, data);
     }
     static async VerifiedUser(data) {
-        const url = '/user/verified-user';
+        const url = '/auth/verified-user';
         return axiosClient.post(url, data);
     }
 }

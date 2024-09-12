@@ -1,6 +1,5 @@
 import { StyleSheet } from 'react-native';
 import React from 'react';
-import Home from './src/screens/Home/Home';
 import UserProfile from './src/screens/User/UserProfile';
 import Login from './src/screens/LoginRegister/Login';
 import { NavigationContainer } from '@react-navigation/native';
@@ -20,8 +19,7 @@ function App() {
         <Stack.Screen name="Signup" component={Signup} />
         <Stack.Screen name="ForgotPW" component={ForgotPW} />
         <Stack.Screen name="ResetPW" component={ResetPW} />
-        <Stack.Screen name="Home" component={Home} />
-        <Stack.Screen name="VerifiedUser" component={VerifyUser} />
+        <Stack.Screen name="VerifyUser" component={VerifyUser} />
       </Stack.Navigator>
     </NavigationContainer>
   );

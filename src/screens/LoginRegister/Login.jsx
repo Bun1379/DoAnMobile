@@ -27,12 +27,13 @@ function Login({ navigation }) {
                     Alert.alert('Đăng nhập thành công!');
                     navigation.navigate('VerifyUser', { email });
                 }
-                else if (response.data.DT.user.is_admin === true) {
+                else {
                     Alert.alert('Đăng nhập thành công!');
                     navigation.navigate('UserProfile');
                 }
             } else {
                 Alert.alert('Đăng nhập thất bại', response.data.message);
+                console.error('Chi tiết lỗi:', response.data.message);
             }
         } catch (error) {
             console.error('Chi tiết lỗi:', error.message);
